@@ -26,9 +26,6 @@ def csv_to_dictionary(filename, encodings=['utf-8', 'latin-1', 'utf-16', 'window
     final_dict ={i: [a for a in j if a not in values] for i,j in final_dict.items()}
     return final_dict
 
-change_dict = csv_to_dictionary('Taxonomy for direction of change.csv')
-change_dict = {key: [value for value in change_dict[key] if re.search(r'[a-zA-Z0-9]+', value)] for key in change_dict.keys()}
-
 # IMPORT TAXONOMY OF CHANGE
 def csv_to_dictionary_semicolon_delimiter(filename, encodings=['utf-8', 'latin-1', 'utf-16', 'windows-1252']):
     for encoding in encodings:
@@ -45,11 +42,6 @@ def csv_to_dictionary_semicolon_delimiter(filename, encodings=['utf-8', 'latin-1
     values = ['@remove@'] 
     final_dict ={i: [a for a in j if a not in values] for i,j in final_dict.items()}
     return final_dict
-
-all_topics = csv_to_dictionary_semicolon_delimiter('all_topics.csv')
-all_topics = {key: [value for value in all_topics[key] if re.search(r'[a-zA-Z0-9]+', value)] for key in all_topics.keys()}
-all_topics = {k: [x.strip() for x in v] for k, v in all_topics.items()}
-
 
 
 # CLEAN TEXT INSIDE TEXT COLUMN
